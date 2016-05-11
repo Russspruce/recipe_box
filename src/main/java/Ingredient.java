@@ -7,6 +7,7 @@ public class Ingredient{
   private int id;
 
   public Ingredient(String name) {
+    this.id = id;
     this.name = name;
   }
 

@@ -10,6 +10,7 @@ public class Recipe {
   private int rating;
 
   public Recipe(String recipe_name, String instructions, int rating) {
+    this.id = id;
     this.recipe_name = recipe_name;
     this.instructions = instructions;
     this.rating = rating;

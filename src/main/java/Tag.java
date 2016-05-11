@@ -7,6 +7,7 @@ public class Tag{
   private int id;
 
   public Tag(String category) {
+    this.id = id;
     this.category = category;
   }
 
@@ -73,7 +74,7 @@ public class Tag{
         .addParameter("id", this.getId())
         .executeUpdate();
 
-    String joinDeleteQuery = "DELETE FROM tags_recipes WHERE tag_id = :tag_id;";
+    String joinDeleteQuery = "DELETE FROM recipes_tags WHERE tag_id = :tag_id;";
       con.createQuery(joinDeleteQuery)
         .addParameter("tag_id", this.getId())
         .executeUpdate();
@@ -84,15 +85,15 @@ public class Tag{
     try(Connection con = DB.sql2o.open()) {
       String sql = "INSERT INTO recipes_tags (recipe_id, tag_id) VALUES (:recipe_id, :tag_id);";
       con.createQuery(sql)
-        .addParameter("tag_id", this.id)
         .addParameter("recipe_id", recipe.getId())
+        .addParameter("tag_id", this.id)
         .executeUpdate();
     }
   }
 
   public List<Recipe> getRecipes() {
     try(Connection con = DB.sql2o.open()) {
-      String joinQuery = "SELECT recipe_id FROM recipes_tags WHERE recipe_id = :recipe_id";
+      String joinQuery = "SELECT recipe_id FROM recipes_tags WHERE tag_id = :tag_id";
       List<Integer> recipe_ids = con.createQuery(joinQuery)
         .addParameter("tag_id", this.id)
         .executeAndFetch(Integer.class);

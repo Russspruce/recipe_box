@@ -96,7 +96,7 @@ public class TagTest {
   }
 
   @Test
-  public void delete_deletesAllTagsAndRecipesAssociations() {
+  public void delete_deletesAllTagsAndRecipesAssociations_nada() {
     Recipe myRecipe = new Recipe("Pie", "Make pie", 1);
     myRecipe.save();
     Tag myTag = new Tag("Lunch");

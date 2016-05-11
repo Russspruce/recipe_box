@@ -158,7 +158,7 @@ public class Recipe {
       List<Tag> tags = new ArrayList<Tag>();
 
       for (Integer tag_id : tag_ids) {
-        String tagQuery = "SELECT * FROM ingredients WHERE id = :tag_id";
+        String tagQuery = "SELECT * FROM tags WHERE id = :tag_id";
         Tag tag = con.createQuery(tagQuery)
           .addParameter("tag_id", tag_id)
           .executeAndFetchFirst(Tag.class);

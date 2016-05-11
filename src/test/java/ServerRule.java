@@ -5,7 +5,7 @@ public class ServerRule extends ExternalResource {
 
   protected void before() {
     String[] args = {};
-    MAINCLASSNAME.main(args);
+    App.main(args);
    }
 
   protected void after() {

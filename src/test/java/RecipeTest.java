@@ -20,4 +20,23 @@ public class RecipeTest {
     assertEquals("Pie", testRecipe.getRecipeName());
   }
 
+  @Test
+  public void all_emptyAtFirst() {
+    assertEquals(Recipe.all().size(), 0);
+  }
+
+  @Test
+  public void equals_returnsTrueifNamesAreSame() {
+    Recipe firstRecipe = new Recipe("Pie", "Bake stuff in a pan", 5);
+    Recipe secondRecipe = new Recipe("Pie", "Bake stuff in a pan", 5);
+    assertTrue(firstRecipe.equals(secondRecipe));
+  }
+
+  @Test
+  public void save_returnsTrueifNamessAreSame() {
+    Recipe firstRecipe = new Recipe("Pie", "Bake stuff in a pan", 5);
+    firstRecipe.save();
+    assertEquals(Recipe.all().get(0), firstRecipe);
+  }
+
 }

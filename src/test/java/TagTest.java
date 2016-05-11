@@ -9,15 +9,34 @@ public class TagTest {
   public DatabaseRule database = new DatabaseRule();
 
   @Test
-  public void Ingredient_instantiatesCorrectly() {
-    Ingredient testIngredient = new Ingredient ("Basil");
-    assertTrue(testIngredient instanceof Ingredient);
+  public void Tag_instantiatesCorrectly() {
+    Tag testTag = new Tag ("Breakfast");
+    assertTrue(testTag instanceof Tag);
   }
 
   @Test
-  public void getName_returnsName_String() {
-    Ingredient testIngredient = new Ingredient ("Basil");
-    assertEquals("Basil", testIngredient.getName());
+  public void getCategory_returnsCategory_String() {
+    Tag testTag = new Tag ("Breakfast");
+    assertEquals("Breakfast", testTag.getCategory());
+  }
+
+  @Test
+  public void all_emptyAtFirst() {
+    assertEquals(Tag.all().size(), 0);
+  }
+
+  @Test
+  public void equals_returnsTrueifCategoriesAreSame() {
+    Tag firstTag = new Tag("Breakfast");
+    Tag secondTag = new Tag("Breakfast");
+    assertTrue(firstTag.equals(secondTag));
+  }
+
+  @Test
+  public void save_returnsTrueifCategoriesAreSame() {
+    Tag firstTag = new Tag("Breakfast");
+    firstTag.save();
+    assertEquals(Tag.all().get(0), firstTag);
   }
 
 }

@@ -32,6 +32,7 @@ public class App {
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
+
     post("/recipes", (request, response) -> {
       HashMap<String, Object> model = new HashMap<String, Object>();
       String recipe_name = request.queryParams("recipe_name");
@@ -41,6 +42,15 @@ public class App {
       newRecipe.save();
       model.put("recipes", Recipe.all());
       model.put("template", "templates/recipes.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+    get("/recipes/:id", (request, response) -> {
+      HashMap<String, Object> model = new HashMap<String, Object>();
+      Recipe recipe = Recipe.find(Integer.parseInt(request.params("id")));
+      model.put("recipe", recipe);
+      model.put("ingredients", recipe.getIngredients());
+      model.put("template", "templates/recipe-info.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 

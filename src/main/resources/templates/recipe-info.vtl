@@ -2,6 +2,12 @@
 
 <p>$recipe.getInstructions()</p>
 
-<h3>$recipe.getRating()</h3>
+<h3>Rating: $recipe.getRating()</h3>
 
-<h3><a href="/"Home</a></h3>
+<h3>Ingredients</h3>
+<ul>
+  #foreach ($ingredient in $ingredients)
+    <li>$ingredient.getName()
+  #end
+</ul>
+<h3><a href="/">Home</a></h3>

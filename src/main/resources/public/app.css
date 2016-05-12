@@ -1,8 +1,11 @@
 body {
   text-align: center;
+  background-image: url("http://foodforlazysoul.com/wp-content/uploads/2015/03/Dollarphotoclub_68743465.jpg");
+  background-size: cover;
 }
 
 h1 {
+  font-size: 70px;
   font-family: cookie;
 }
 
@@ -12,4 +15,12 @@ h3 {
 
 #ingredientToTheLeft {
   text-align: left;
+}
+
+#titleName {
+  color: #FF6C0A;
+}
+
+li a{
+  color: red;
 }

@@ -19,21 +19,23 @@
           <option value="5">5</option>
         </select>
         <br>
-        <!-- <label for="category1">Category One:</label>
-        <select id="category1" name="category1" class="form-control">
-          <option>  Select Category  </option>
-          #foreach($tag in $tags)
-            <option value=$tag.getId()>$tag.getCategory()</option>
-            #end
-        </select>
+        <label for="ingredientOne">Ingredient One:</label>
+        <input type="text" id="ingredientOne" name="ingredientOne"></input>
         <br>
-        <label for="category2">Category Two:</label>
-        <select id="category2" name="category2" class="form-control">
+        <label for="ingredientTwo">Ingredient Two:</label>
+        <input type="text" id="ingredientTwo" name="ingredientTwo"></input>
+        <br>
+        <label for="ingredientThree">Ingredient Three:</label>
+        <input type="text" id="ingredientThree" name="ingredientThree"></input>
+        <br>
+        <label for="category">Category One:</label>
+        <select id="category" name="category" class="form-control">
           <option>  Select Category  </option>
           #foreach($tag in $tags)
             <option value=$tag.getId()>$tag.getCategory()</option>
-            #end
-        </select> -->
+          #end
+        </select>
+
       <button type="submit" class="btn btn-success">Add</button>
     </form>
 

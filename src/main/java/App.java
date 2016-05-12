@@ -40,6 +40,21 @@ public class App {
       int rating = Integer.parseInt(request.queryParams("rating"));
       Recipe newRecipe = new Recipe(recipe_name, instructions, rating);
       newRecipe.save();
+
+      String ingredientOne = request.queryParams("ingredientOne");
+      String ingredientTwo = request.queryParams("ingredientTwo");
+      String ingredientThree = request.queryParams("ingredientThree");
+      Ingredient newIngredient1 = new Ingredient(ingredientOne);
+      newIngredient1.save();
+      newRecipe.addIngredient(newIngredient1);
+      Ingredient newIngredient2 = new Ingredient(ingredientTwo);
+      newIngredient2.save();
+      newRecipe.addIngredient(newIngredient2);
+      Ingredient newIngredient3 = new Ingredient(ingredientThree);
+      newIngredient3.save();
+      newRecipe.addIngredient(newIngredient3);
+      Tag tag = Tag.find(Integer.parseInt(request.queryParams("category")));
+      newRecipe.addTag(tag);
       model.put("recipes", Recipe.all());
       model.put("template", "templates/recipes.vtl");
       return new ModelAndView(model, layout);
@@ -50,6 +65,7 @@ public class App {
       Recipe recipe = Recipe.find(Integer.parseInt(request.params("id")));
       model.put("recipe", recipe);
       model.put("ingredients", recipe.getIngredients());
+      model.put("categories", recipe.getTags());
       model.put("template", "templates/recipe-info.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());

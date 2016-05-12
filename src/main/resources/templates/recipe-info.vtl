@@ -4,6 +4,13 @@
 
 <h3>Rating: $recipe.getRating()</h3>
 
+<h3>Tags: </h3>
+  <ul>
+  #foreach ($category in $categories)
+    <li>$category.getCategory()</li>
+  #end
+</ul>
+
 <h3>Ingredients</h3>
 <ul>
   #foreach ($ingredient in $ingredients)

@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="row">
+    <h2>Add a Recipe!</h2>
+    <break>
+
+    <form class="form-group" action="recipe-info.vtl" method="post">
+        <label for="recipe_name">Recipe Title:</label>
+        <input type="text" id="recipe_name" name="recipe_name"></input>
+        <br>
+        <label for="instructions">Instructions:</label>
+        <textarea rows="6" cols="50" type="text" id="instructions" name="instructions"></textarea>
+        <br>
+        <label for="rating">Rating:</label>
+        <select id="rating" name="rating" class="form-control">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
+        <br>
+        <label for="category1">Category One:</label>
+        <select id="category1" name="category1" class="form-control">
+          <option> -- Select Category -- </option>
+          #foreach($tag in $tags)
+            <option value=$tag.getId()>$tag.getCategory()</option>
+            #end
+        </select>
+        <br>
+        <label for="category2">Category Two:</label>
+        <select id="category2" name="category2" class="form-control">
+          <option> -- Select Category -- </option>
+          #foreach($tag in $tags)
+            <option value=$tag.getId()>$tag.getCategory()</option>
+            #end
+        </select>
+      <button type="submit" class="btn btn-success">Add</button>
+    </form>
+
+  </div>
+</div>

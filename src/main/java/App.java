@@ -55,6 +55,8 @@ public class App {
       newRecipe.addIngredient(newIngredient3);
       Tag tag = Tag.find(Integer.parseInt(request.queryParams("category")));
       newRecipe.addTag(tag);
+      Tag tag2 = Tag.find(Integer.parseInt(request.queryParams("category2")));
+      newRecipe.addTag(tag2);
       model.put("recipes", Recipe.all());
       model.put("template", "templates/recipes.vtl");
       return new ModelAndView(model, layout);
@@ -77,6 +79,27 @@ public class App {
       response.redirect("/recipes");
       return null;
     });
+
+    get("recipes/:id/edit", (request, response) -> {
+      HashMap<String, Object> model = new HashMap<String, Object>();
+      Recipe recipe = Recipe.find(Integer.parseInt(request.params("id")));
+      model.put("recipe", recipe);
+      model.put("ingredients", recipe.getIngredients());
+      model.put("categories", recipe.getTags());
+      model.put("template", "templates/recipe-edit.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+    post("/recipes/:id/edit", (request, response) -> {
+      HashMap<String, Object> model = new HashMap<String, Object>();
+      Recipe recipe = Recipe.find(Integer.parseInt(request.params("id")));
+      String instructions = request.queryParams("instructions");
+      recipe.update(recipe.getRecipeName(), instructions, recipe.getRating());
+      String url = String.format("/recipes/%d", recipe.getId());
+      response.redirect(url);
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
 
   }
 }

@@ -12,9 +12,16 @@
 </ul>
 
 <h3>Ingredients</h3>
+<div id="ingredientToTheLeft">
 <ul>
   #foreach ($ingredient in $ingredients)
     <li>$ingredient.getName()
   #end
 </ul>
+</div>
+
+<h3><a href="/recipes/$recipe.getId()/edit">Edit $recipe.getRecipeName()</a></h3>
+
+<h3><a href="/recipes">Go Back</a></h3>
+
 <h3><a href="/">Home</a></h3>

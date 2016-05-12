@@ -35,6 +35,14 @@
             <option value=$tag.getId()>$tag.getCategory()</option>
           #end
         </select>
+        <br>
+        <label for="category2">Category Two:</label>
+        <select id="category2" name="category2" class="form-control">
+          <option value="0">  Select Category  </option>
+          #foreach($tag in $tags)
+            <option value=$tag.getId()>$tag.getCategory()</option>
+          #end
+        </select>
 
       <button type="submit" class="btn btn-success">Add</button>
     </form>

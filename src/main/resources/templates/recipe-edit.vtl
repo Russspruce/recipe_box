@@ -1,0 +1,23 @@
+<h1>$recipe.getRecipeName()</h1>
+
+#if($recipe.getRecipeName())
+  <p>Current Category</p>
+  <ul>
+    #foreach($task in $category.getTasks())
+      <li>$task.getDescription()</li>
+    #end
+  </ul>
+#end
+
+<h4>$recipe.getRecipeName()</h4>
+
+<form action="/recipes/$recipe.getId()/edit" method="post">
+  <input id="instructions" name="instruction" type="hidden" value="$recipe.getId()">
+  <label for="instructions">Update instructions:</label>
+  <textarea rows="6" cols="50" type="text" id="instructions" name="instructions">$recipe.getInstructions()</textarea>
+  <button type="submit" class="btn btn-info">Update $recipe.getRecipeName()</button>
+</form>
+
+
+
+<p><a href="/recipes">Go back</a></p>

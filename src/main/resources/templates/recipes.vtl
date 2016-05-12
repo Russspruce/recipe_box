@@ -1,0 +1,11 @@
+<h1>Recipe Box</h1>
+<ul>
+  #foreach ($recipe in $recipes)
+    <h2><li><a href="/recipes/$recipe.getId()">$recipe.getRecipeName()</a>
+    <form class="" action="/recipes/$recipe.getId()/delete" method="post">
+      <small><button type="submit" class="">Delete</button></small>
+    </form></li></h2>
+  #end
+</ul>
+
+<h3><a href="/"Home</a></h3>

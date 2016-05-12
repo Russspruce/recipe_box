@@ -25,28 +25,32 @@ public class App {
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
-    post("/recipes/info/", (request, response) -> {
+    get("/recipes", (request, response) -> {
+      HashMap<String, Object> model = new HashMap<String, Object>();
+      model.put("recipes", Recipe.all());
+      model.put("template", "templates/recipes.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+    post("/recipes", (request, response) -> {
       HashMap<String, Object> model = new HashMap<String, Object>();
       String recipe_name = request.queryParams("recipe_name");
       String instructions = request.queryParams("instructions");
       int rating = Integer.parseInt(request.queryParams("rating"));
       Recipe newRecipe = new Recipe(recipe_name, instructions, rating);
-
-
-      String category1 = request.queryParams("category1");
-      String category2 = request.queryParams("category2");
-      ArrayList<String> categories = new ArrayList<String>();
-      categories.add(category1);
-      categories.add(category2);
-      for(String category : categories) {
-        Tag newCategory = new Tag(category);
-        newCategory.save();
-      }
-
       newRecipe.save();
-
+      model.put("recipes", Recipe.all());
+      model.put("template", "templates/recipes.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
+
+    post("recipes/:id/delete", (request, response) -> {
+      HashMap<String, Object> model = new HashMap<String, Object>();
+      Recipe recipe = Recipe.find(Integer.parseInt(request.params("id")));
+      recipe.delete();
+      response.redirect("/recipes");
+      return null;
+    });
 
   }
 }

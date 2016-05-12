@@ -3,7 +3,7 @@
     <h2>Add a Recipe!</h2>
     <break>
 
-    <form class="form-group" action="recipe-info.vtl" method="post">
+    <form class="form-group" action="/recipes" method="post">
         <label for="recipe_name">Recipe Title:</label>
         <input type="text" id="recipe_name" name="recipe_name"></input>
         <br>
@@ -19,9 +19,9 @@
           <option value="5">5</option>
         </select>
         <br>
-        <label for="category1">Category One:</label>
+        <!-- <label for="category1">Category One:</label>
         <select id="category1" name="category1" class="form-control">
-          <option> -- Select Category -- </option>
+          <option>  Select Category  </option>
           #foreach($tag in $tags)
             <option value=$tag.getId()>$tag.getCategory()</option>
             #end
@@ -29,11 +29,11 @@
         <br>
         <label for="category2">Category Two:</label>
         <select id="category2" name="category2" class="form-control">
-          <option> -- Select Category -- </option>
+          <option>  Select Category  </option>
           #foreach($tag in $tags)
             <option value=$tag.getId()>$tag.getCategory()</option>
             #end
-        </select>
+        </select> -->
       <button type="submit" class="btn btn-success">Add</button>
     </form>
 
